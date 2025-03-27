@@ -17,6 +17,12 @@ const BracketElement: React.FC<BracketElementProps> = ({ title, bracketContent})
     <div>
       <p>{title}</p>
     </div>
+    {bracketContent.map((teamScore, index) => (
+        <div key={index} className="team-row">
+          <span className="team-name">{teamScore.team}</span>
+          <span className="team-score">{teamScore.score}</span>
+        </div>
+      ))}
     </>
   );
 };
