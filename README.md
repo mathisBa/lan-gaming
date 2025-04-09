@@ -28,12 +28,13 @@ npm install
 npm install --save-dev @types/node
 ```
 
-## Run 
+## Run
 
 ```bash
 npm run dev
 ```
-ou 
+
+ou
 
 ```bash
 npm run build
@@ -43,6 +44,7 @@ npx serve ./dist -p 9292
 ## Documentation composant
 
 Accès à la doc:
+
 ```bash
 npm run storybook
 ```
@@ -52,21 +54,26 @@ npm run storybook
 ## Objectifs
 
 Première page d'accroche = site vitrine
-  - Présentation de l'événement
-  - Formulaire d'inscription
-  - Affichage du nombre d'inscrits
-  - Présentation des jeux
-  - Présentation des sponsors
+
+- Présentation de l'événement
+- Formulaire d'inscription
+- Affichage du nombre d'inscrits
+- Présentation des jeux
+- Présentation des sponsors
 
 Page de tournoi
-  - affichage des tournois (Echecs / rocket league)
-  - affichage des arbres type tournoi suisse
-  - affichage des résultats
+
+- affichage des tournois (Echecs / rocket league)
+- affichage des arbres type tournoi suisse
+- affichage des résultats
 
 Page de résultats
-  - podium + arbre de tournoi
-  - affichage des résultats des tournois
+
+- podium + arbre de tournoi
+- affichage des résultats des tournois
 
 ## Maquette
 
 https://www.figma.com/design/dHh7R0x99L0gvn9qCwMYRS/MyDigitalArena?node-id=7-125
+
+## Ajouter l'extension prettier sur vs code
