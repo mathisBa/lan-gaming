@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TeamCard from "../teamCard/TeamCard.tsx";
 import "./TeamList.scss";
+import { ClipLoader } from "react-spinners";
 
 type Player = {
   name: string;
@@ -102,7 +103,11 @@ export function TeamList() {
   }, [API_URL]);
 
   if (loading) {
-    return <div>Chargement des équipes...</div>;
+    return (
+      <div className="loader-container">
+        <ClipLoader color="#e07a30" size={50} />
+      </div>
+    );
   }
 
   if (error) {
