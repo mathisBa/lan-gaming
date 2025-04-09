@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RankRow from "../rank-row/RankRow";
 import "./Ranking.scss";
+import { ClipLoader } from "react-spinners";
 
 export interface Rank {
   équipe: string;
@@ -41,7 +42,11 @@ function Ranking() {
   }, []);
 
   if (loading) {
-    return <div>Chargement des équipes...</div>;
+    return (
+      <div className="loader-container">
+        <ClipLoader color="#e07a30" size={50} />
+      </div>
+    );
   }
 
   if (error) {
