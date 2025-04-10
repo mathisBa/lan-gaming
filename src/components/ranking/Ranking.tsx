@@ -38,7 +38,7 @@ function Ranking() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [API_URL]);
 
   if (loading) {
     return <div>Chargement des équipes...</div>;
