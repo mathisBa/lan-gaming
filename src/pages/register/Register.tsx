@@ -77,6 +77,7 @@ function Register() {
             "Erreur lors de la récupération des niveaux."
           );
         }
+        console.error("test :", error);
 
         const data: Level[] = await response.json();
         const levelNames = data.map((level) => level.name);

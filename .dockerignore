@@ -1,0 +1,8 @@
+node_modules/
+dist/
+maquette/
+.storybook/
+package-lock.json
+.prettierrc
+README.md
+.gitignore
