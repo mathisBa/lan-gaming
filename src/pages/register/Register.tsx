@@ -55,8 +55,8 @@ function Register() {
       level: ""
     }))
   );
-  const [levels, setLevels] = useState<string[]>([]);
-  const [promos, setPromos] = useState<string[]>([]);
+  const [levelsList, setLevelsList] = useState<Level[]>([]);
+  const [promosList, setPromosList] = useState<Promo[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -79,8 +79,7 @@ function Register() {
         }
 
         const data: Level[] = await response.json();
-        const levelNames = data.map((level) => level.name);
-        setLevels(levelNames);
+        setLevelsList(data);
       } catch (error) {
         console.error("Erreur :", error);
         setError("Impossible de récupérer les niveaux.");
@@ -107,8 +106,7 @@ function Register() {
         }
 
         const data: Promo[] = await response.json();
-        const promoNames = data.map((promo) => promo.name);
-        setPromos(promoNames);
+        setPromosList(data);
       } catch (error) {
         console.error("Erreur :", error);
         setError("Impossible de récupérer les promotions.");
@@ -119,18 +117,18 @@ function Register() {
   }, [API_URL]);
 
   const levelsOptions = useMemo(() => {
-    return levels.reduce((options, levelName, index) => {
-      options[index.toString()] = levelName;
+    return levelsList.reduce((options, level) => {
+      options[level.id.toString()] = level.name;
       return options;
     }, {} as { [key: string]: string });
-  }, [levels]);
+  }, [levelsList]);
 
   const promosOptions = useMemo(() => {
-    return promos.reduce((options, promoName, index) => {
-      options[index.toString()] = promoName;
+    return promosList.reduce((options, promo) => {
+      options[promo.id.toString()] = promo.name;
       return options;
     }, {} as { [key: string]: string });
-  }, [promos]);
+  }, [promosList]);
 
   const handlePlayerChange = useCallback(
     (index: number, field: string, value: string) => {
@@ -184,8 +182,6 @@ function Register() {
     async (e: React.FormEvent) => {
       e.preventDefault();
 
-      console.log("teamName", teamName);
-      console.log("teamAcronyme", teamAcronyme);
       if (!teamName.trim() || !teamAcronyme.trim()) {
         setError(
           "Le nom de l'équipe et l'acronyme sont obligatoires."
@@ -235,12 +231,6 @@ function Register() {
           );
         }
 
-        const data = await response.json();
-        console.log(
-          "Formulaire soumis avec succès :",
-          data
-        );
-
         navigate("/confirm-register");
       } catch (error) {
         console.error("Erreur :", error);
@@ -257,8 +247,8 @@ function Register() {
       <h1 className="pageTitle">Inscription</h1>
       <Card>
         <div className="register-container">
-        <InfoTournament isRegistration={true} />
-      
+          <InfoTournament isRegistration={true} />
+
           <div className="register-form">
             <h2>Equipe</h2>
             <form className="player-form">
@@ -349,6 +339,7 @@ function Register() {
                   S'inscrire
                 </PrimaryButton>
               </div>
+              {error && <p className="error-message">{error}</p>}
             </form>
           </div>
         </div>
